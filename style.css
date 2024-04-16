@@ -1,0 +1,12 @@
+
+.descripcion{
+    background-color: burlywood;
+    display: inline-block;
+}
+img{
+    display: flex;
+}
+.patata{
+    display: block;
+
+}
