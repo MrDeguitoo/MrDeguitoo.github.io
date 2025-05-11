@@ -1,0 +1,313 @@
+/* Base styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background-color: #f9f3f0;
+  background-image: 
+    radial-gradient(#f8e8e1 15%, transparent 16%),
+    radial-gradient(#f8e8e1 15%, transparent 16%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  color: #5d4037;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Letter styling */
+.letter-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  perspective: 1000px;
+}
+
+.letter {
+  background-color: #fffcf7;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  transform-style: preserve-3d;
+  transform: rotateX(5deg);
+  transition: transform 0.5s ease;
+  background-image: 
+    linear-gradient(#f3e9dc 1px, transparent 1px),
+    linear-gradient(90deg, #f3e9dc 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: -1px -1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.letter:hover {
+  transform: rotateX(0deg);
+}
+
+.letter-header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e0d3c7;
+  padding-bottom: 20px;
+}
+
+.letter-header h1 {
+  font-family: 'Dancing Script', cursive;
+  color: #c87137;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.date {
+  font-style: italic;
+  color: #8d6e63;
+}
+
+.letter-content {
+  margin-bottom: 30px;
+  min-height: 300px;
+}
+
+.letter-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  outline: none;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.letter-text:focus {
+  background-color: rgba(255, 249, 235, 0.5);
+}
+
+/* Sunflower styling */
+.sunflower-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sunflower {
+  position: absolute;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.sunflower.bloom {
+  animation: bloom 1.5s forwards;
+}
+
+@keyframes bloom {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(5deg);
+    opacity: 1;
+  }
+}
+
+.sunflower:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.petals-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.sunflower .center {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #795548 10%, #5d4037 70%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.sunflower .petals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+}
+
+.sunflower .petal {
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  background: #FFC107;
+  border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+  top: 50%;
+  left: 50%;
+  transform-origin: center bottom;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sunflower .stem {
+  position: absolute;
+  width: 8px;
+  height: 120px;
+  background: linear-gradient(to bottom, #689F38, #558B2F);
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.sunflower .leaf {
+  position: absolute;
+  width: 35px;
+  height: 20px;
+  background: #7CB342;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(-40deg);
+  top: 80px;
+  left: -20px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.sunflower .leaf:nth-child(2) {
+  transform: rotate(40deg) scaleX(-1);
+  left: auto;
+  right: -20px;
+}
+
+/* Button styling */
+.btn {
+  background-color: #ffd54f;
+  border: none;
+  color: #5d4037;
+  padding: 10px 20px;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.btn:hover {
+  background-color: #ffca28;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  z-index: 5;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, -5px) rotate(2deg); }
+  50% { transform: translate(0, -10px) rotate(-1deg); }
+  75% { transform: translate(-5px, -5px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .letter {
+    padding: 25px;
+  }
+  
+  .letter-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .letter-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .sunflower .petals {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .sunflower .petal {
+    width: 25px;
+    height: 50px;
+  }
+  
+  .sunflower .stem {
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .letter {
+    padding: 20px;
+  }
+  
+  .letter-header h1 {
+    font-size: 2rem;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
