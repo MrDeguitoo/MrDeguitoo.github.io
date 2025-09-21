@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 50%, #98FB98 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animación de girasoles flotantes */
+.sunflower {
+    position: absolute;
+    font-size: 4rem;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.sunflower:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.sunflower:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+.sunflower:nth-child(3) { top: 60%; left: 5%; animation-delay: 2s; }
+.sunflower:nth-child(4) { top: 70%; right: 10%; animation-delay: 3s; }
+.sunflower:nth-child(5) { top: 40%; left: 15%; animation-delay: 4s; }
+.sunflower:nth-child(6) { top: 85%; right: 20%; animation-delay: 5s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(5deg); }
+    50% { transform: translateY(-15px) rotate(-3deg); }
+    75% { transform: translateY(-25px) rotate(2deg); }
+}
+
+/* Partículas doradas */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #FFD700, #FFA500);
+    border-radius: 50%;
+    animation: sparkle 4s linear infinite;
+    opacity: 0;
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 1; transform: translateY(90vh) scale(1); }
+    90% { opacity: 1; transform: translateY(10vh) scale(1); }
+    100% { opacity: 0; transform: translateY(0) scale(0); }
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Nota adhesiva */
+.note {
+    width: 350px;
+    height: 400px;
+    background: linear-gradient(145deg, #FFEB3B 0%, #FFF176 100%);
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    transform: rotate(-2deg);
+    animation: noteFloat 3s ease-in-out infinite;
+}
+
+.note:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+@keyframes noteFloat {
+    0%, 100% { transform: rotate(-2deg) translateY(0px); }
+    50% { transform: rotate(-2deg) translateY(-10px); }
+}
+
+/* Efecto de cinta adhesiva */
+.note::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Líneas de la nota */
+.note::after {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 30px;
+    right: 30px;
+    height: calc(100% - 110px);
+    background-image: 
+        repeating-linear-gradient(
+            transparent,
+            transparent 25px,
+            rgba(255,193,7,0.3) 25px,
+            rgba(255,193,7,0.3) 26px
+        );
+}
+
+/* Contenido de la nota */
+.note-content {
+    padding: 40px 30px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+.note-title {
+    font-size: 1.8rem;
+    color: #E65100;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.note-text {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'Georgia', serif;
+    pointer-events: none;
+    user-select: none;
+}
+
+.note-text::placeholder {
+    color: #666;
+    opacity: 0.7;
+}
+
+/* Contador de notas */
+.note-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    background: rgba(255,152,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Instrucciones */
+.instructions {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.9);
+    padding: 15px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.instructions h2 {
+    color: #E65100;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.instructions p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .note {
+        width: 300px;
+        height: 350px;
+    }
+    
+    .sunflower {
+        font-size: 2.5rem;
+    }
+    
+    .instructions {
+        position: static;
+        transform: none;
+        margin: 20px auto;
+        width: 90%;
+    }
+}
